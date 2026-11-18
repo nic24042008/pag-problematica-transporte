@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Herramienta educativa para resolver problemas de transporte mediante Esquina Noroeste, Costo Mínimo y Vogel."
+    />
+    <title>Problema de transporte | EEST N.º 2</title>
+    <link rel="icon" href="assets/logoEESTN2.png" />
+    <link rel="stylesheet" href="transporte-styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#inicio" aria-label="Inicio, Problema de transporte">
+        <img src="assets/logoEESTN2.png" alt="Escudo de la E.E.S.T. N.º 2" />
+        <span>E.E.S.T. N.º 2 <small>Valentín Alsina</small></span>
+      </a>
+      <div class="header-label">Investigación operativa <span>·</span> Métodos de transporte</div>
+    </header>
+
+    <main id="inicio">
+      <section class="intro">
+        <p class="eyebrow">Herramienta de resolución</p>
+        <h1>Problema de <span>transporte</span></h1>
+        <p class="intro-copy">
+          Organizá costos, ofertas y demandas para obtener una solución inicial factible
+          y entender cómo se construye.
+        </p>
+      </section>
+
+      <section class="workspace" aria-labelledby="problem-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">01 / Datos del problema</p>
+            <h2 id="problem-title">Matriz de transporte</h2>
+          </div>
+          <div class="table-actions" aria-label="Modificar tamaño de la matriz">
+            <button class="button button-secondary" id="remove-column" type="button">− Destino</button>
+            <button class="button button-secondary" id="add-column" type="button">+ Destino</button>
+            <button class="button button-secondary" id="remove-origin" type="button">− Origen</button>
+            <button class="button button-secondary" id="add-origin" type="button">+ Origen</button>
+          </div>
+        </div>
+
+        <p class="table-hint">
+          En cada celda ingresá el costo unitario. Las celdas verdes muestran las asignaciones al resolver.
+        </p>
+        <div class="table-scroll" tabindex="0" aria-label="Tabla desplazable de costos, ofertas y demandas">
+          <table id="transport-table"></table>
+        </div>
+
+        <div class="balance-status" id="balance-status" role="status" aria-live="polite"></div>
+        <div class="solve-controls">
+          <label class="method-picker" for="method">
+            Método
+            <select id="method">
+              <option value="northwest">Esquina Noroeste</option>
+              <option value="least-cost">Costo Mínimo</option>
+              <option value="vogel">Vogel</option>
+            </select>
+          </label>
+          <div class="action-buttons">
+            <button class="button button-primary" id="solve" type="button">Resolver problema</button>
+            <button class="button button-text" id="reset" type="button">Restablecer ejemplo</button>
+          </div>
+        </div>
+        <p class="footnote">
+          Si la oferta y la demanda no coinciden, se agrega automáticamente un origen o destino ficticio
+          con costo cero.
+        </p>
+        <p class="error-message" id="error-message" role="alert" hidden></p>
+      </section>
+
+      <section class="results" id="results" aria-labelledby="results-title" hidden>
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">02 / Solución</p>
+            <h2 id="results-title">Resultado del método</h2>
+          </div>
+          <span class="result-method" id="result-method"></span>
+        </div>
+        <div id="result-content"></div>
+      </section>
+    </main>
+
+    <footer>
+      <span>Proyecto de Problemática de Transporte</span>
+      <span>E.E.S.T. N.º 2 · Valentín Alsina</span>
+    </footer>
+    <script src="js/transporte-modelo.js"></script>
+    <script src="js/metodos/transporte-noroeste.js"></script>
+    <script src="js/metodos/transporte-costo-minimo.js"></script>
+    <script src="js/metodos/transporte-vogel.js"></script>
+    <script src="js/transporte-tabla.js"></script>
+    <script src="js/transporte-resultados.js"></script>
+    <script src="js/transporte-resolver.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
